@@ -85,6 +85,7 @@ function potion(name) {
   }
   gold -= 5
   let money = document.querySelector('#gold')
+  // @ts-ignore
   money.innerText = gold
 
   drawHeros()
@@ -99,14 +100,13 @@ function monsterDamage() {
 
         boss.health -= hero.damage
         // @ts-ignore
-        console.log(boss.health);
+        // console.log(boss.health);
         goldOnHit()
       }
     }
   })
-  bossHealth()
   bossLevelUp()
-
+  bossHealth()
 }
 function bossHealth() {
   let bosshealth = document.querySelector('#bosshealth')
@@ -114,7 +114,7 @@ function bossHealth() {
   template += `
     <div class="progress">
           <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-            aria-label="Animated striped example" aria-valuenow="${boss.health}%" aria-valuemin="0" aria-valuemax="100"
+            aria-label="Animated striped example" aria-valuenow="${boss.health}%" aria-valuemin="0" aria-valuemax="${boss.maxHealth}"
             style="width: ${boss.health}%">
           </div>
         </div>`
@@ -124,9 +124,12 @@ function bossHealth() {
 function bossLevelUp() {
   if (boss.health <= 0) {
     boss.level++
-    let lvl = boss.level
+    let bosslvl = document.getElementById('bosslvl')
     // @ts-ignore
-    lvl = document.querySelector('#bosslvl')
+    console.log("bosslvl", bosslvl);
+    // @ts-ignore
+    bosslvl.innerHTML = boss.level
+
 
     console.log('level', boss.level);
 
@@ -154,19 +157,16 @@ function getHelp(name) {
   if (gold < 10) {
     return
   } else {
+    // @ts-ignore
     help.lvl++
   }
   gold -= 10
   let money = document.querySelector('#gold')
+  // @ts-ignore
   money.innerText = gold
 
   drawHeros()
 }
-
-
-
-
-
 
 bossHealth()
 setInterval(heroDamage, 500)
