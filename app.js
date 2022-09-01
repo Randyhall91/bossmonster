@@ -42,7 +42,7 @@ function drawHeros() {
     if (hero.lvl >= 1) {
       template += `
       <div class="col-4">
-      <div class="card p-1">
+      <div class="card p-1 opacity-75">
       <div class="text-center">
       <img src="${hero.img}" class="card-img-top img-height" alt="...">
       </div>
@@ -83,11 +83,7 @@ function potion(name) {
   if (gold < 5) {
     return
   }
-
-
-
   gold -= 5
-
   let money = document.querySelector('#gold')
   money.innerText = gold
 
@@ -128,6 +124,10 @@ function bossHealth() {
 function bossLevelUp() {
   if (boss.health <= 0) {
     boss.level++
+    let lvl = boss.level
+    // @ts-ignore
+    lvl = document.querySelector('#bosslvl')
+
     console.log('level', boss.level);
 
     if (boss.level >= 1) {

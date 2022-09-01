@@ -7,3 +7,8 @@
   max-height: 7rem;
   max-width: 6rem;
 }
+
+body {
+  background-image: url('https://media.comicbook.com/2021/03/bill-murray-space-jam-1260193.jpeg?auto=webp');
+  background-size: contain;
+}
