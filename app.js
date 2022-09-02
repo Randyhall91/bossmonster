@@ -111,11 +111,14 @@ function monsterDamage() {
 function bossHealth() {
   let bosshealth = document.querySelector('#bosshealth')
   let template = ''
+  let bosspercent = 0
+  bosspercent = (boss.health / boss.maxHealth) * 100
+
   template += `
     <div class="progress">
           <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
-            aria-label="Animated striped example" aria-valuenow="${boss.health}%" aria-valuemin="0" aria-valuemax="${boss.maxHealth}"
-            style="width: ${boss.health}%">
+            aria-label="Animated striped example" aria-valuenow="${bosspercent}%" aria-valuemin="0" aria-valuemax="100%"
+            style="width: ${bosspercent}%">
           </div>
         </div>`
   // @ts-ignore
